@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tram Status Update</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #1d1d1d;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #333;
+      text-align: center;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .btn {
+      padding: 18px 24px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease, background-color 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-home {
+      background-color: #25D366; /* WhatsApp groen */
+    }
+
+    .btn-school {
+      background-color: #007AFF; /* Blauw */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚊 Ik ben bij de tram!</h1>
+
+  <div class="btn-container">
+    <button class="btn btn-home" onclick="stuurBericht('Testbericht')">
+      🏠 Onderweg naar huis
+    </button>
+
+    <button class="btn btn-school" onclick="stuurBericht('Testbericht')">
+      🏫 Onderweg naar school
+    </button>
+  </div>
+
+  <script>
+    // Vul hier eventueel het vaste telefoonnummer in (bijv. '31612345678').
+    // Laat leeg ('') als je zelf het contact wilt kiezen in WhatsApp.
+    const ONTVANGER_NUMMER = ""; 
+
+    function stuurBericht(bericht) {
+      const encodedBericht = encodeURIComponent(bericht);
+      let whatsappUrl = "";
+
+      if (ONTVANGER_NUMMER.trim() !== "") {
+        whatsappUrl = `https://wa.me/${26679702}?text=${encodedBericht}`;
+      } else {
+        whatsappUrl = `https://wa.me/?text=${encodedBericht}`;
+      }
+
+      // Open WhatsApp
+      window.location.href = whatsappUrl;
+    }
+  </script>
+
+</body>
+</html>
